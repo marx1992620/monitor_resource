@@ -8,7 +8,7 @@ CPU、RAM監測程式
 
 ※	以下使用步驟:
 
-1. git 下載後內容如![folder](https://github.com/marx1992620/work_104/blob/main/demo/output_table.png)
+1. git 下載後內容如![folder](https://github.com/marx1992620/resource_monitor/blob/main/output_table.png)
 
 2-0. 執行 monitor_cpu_ram.py 前安裝所需 requirements.txt。
 
