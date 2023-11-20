@@ -8,7 +8,7 @@ CPU、RAM監測程式及表格紀錄
 
 ### 操作說明
 
-1. git 下載後內容如下
+1. git 下載後內容如下<br>
  ![folder](https://github.com/marx1992620/resource_monitor/blob/main/folder.png)
 
 2-0. 執行 monitor_cpu_ram.py 前安裝所需 requirements.txt。
@@ -17,9 +17,9 @@ CPU、RAM監測程式及表格紀錄
 
 2-2. 若無config執行時可動態輸入參數(如 python monitor_cpu_ram.py -- duration 30)。
 
-2-3. 執行 monitor_cpu_ram.exe，僅會讀取同一層資料夾內的config.json，如無則會照預設值執行。執行畫面如下
+2-3. 執行 monitor_cpu_ram.exe，僅會讀取同一層資料夾內的config.json，如無則會照預設值執行。執行畫面如下<br>
  ![processing](https://github.com/marx1992620/resource_monitor/blob/main/processing.png)
 
-3. 程式執行完，輸出結果 resource.usage.csv，第二欄為各列數字的最大值，其餘欄位為各時間點；第一二列為電腦總CPU、RAM使用率，其餘列為各程式之CPU、RAM使用率，單位為 %
+3. 程式執行完，輸出結果 resource.usage.csv，第二欄為各列數字的最大值，其餘欄位為各時間點；第一二列為電腦總CPU、RAM使用率，其餘列為各程式之CPU、RAM使用率，單位為 % <br>
  ![excel](https://github.com/marx1992620/resource_monitor/blob/main/output_file.png)
 <br>
