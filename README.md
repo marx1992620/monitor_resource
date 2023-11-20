@@ -6,8 +6,6 @@ CPU、RAM監測程式
 
 ### 操作說明
 
-※	以下使用步驟:
-
 1. git 下載後內容如![folder](https://github.com/marx1992620/resource_monitor/blob/main/output_table.png)
 
 2-0. 執行 monitor_cpu_ram.py 前安裝所需 requirements.txt。
@@ -19,3 +17,4 @@ CPU、RAM監測程式
 2-3. 執行 monitor_cpu_ram.exe，僅會讀取同一層資料夾內的config.json，如無則會照預設值執行。執行畫面如![processing](https://github.com/marx1992620/resource_monitor/blob/main/processing.png)
 
 3. 程式執行完，輸出結果 resource.usage.csv，第二欄為各列數字的最大值，其餘欄位為各時間點；第一二列為電腦總CPU、RAM使用率，其餘列為各程式之CPU、RAM使用率，單位為%。如![excel](https://github.com/marx1992620/resource_monitor/blob/main/output_file.png)
+<br>
