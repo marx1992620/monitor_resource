@@ -17,10 +17,10 @@ def monitor_resource_usage(duration=60, tick=1, output_file='resource_usage.csv'
     while time.time() - start_time < duration:
         # 獲取系統虛擬記憶體使用率
         virtual_memory = psutil.virtual_memory()
-        print(f"System Memory Usage: {virtual_memory.percent:.2f}%")
         memory_usage.append(virtual_memory.percent)
         total_cpu_percent = round(psutil.cpu_percent(), 2)
         cpu_usage.append(total_cpu_percent)
+        print(f"System CPU Usage: {total_cpu_percent}% , System Memory Usage: {virtual_memory.percent:.2f}%")
         # 獲取所有正在運行的進程
         processes = psutil.process_iter(['pid', 'name', 'cpu_percent', 'memory_percent'])
         time_list.append(str(datetime.now().strftime("%H:%M:%S")))
