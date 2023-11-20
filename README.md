@@ -8,25 +8,14 @@ CPU、RAM監測程式
 
 ※	以下使用步驟:
 
-1.	執行 exe.py 前安裝所需 requirements.txt 或執行 dist/exe.exe，執行成功開啟網頁 http://127.0.0.1:8880
+1. git 下載後內容如![folder](https://github.com/marx1992620/work_104/blob/main/demo/output_table.png)
 
-2. 於網頁輸入職缺關鍵字、選擇工作地點(最多三個，可不選)、輸入爬蟲的網頁數，上傳已編輯好的技能同義詞字典synonym.json(僅接受json檔，若無可跳過)
+2-0. 執行 monitor_cpu_ram.py 前安裝所需 requirements.txt。
 
-3.	請參考synonym.json格式，synonym_dic中填寫欲搜尋的技能及其同義詞（例如AI同義詞有artificial intelligence=人工智慧，則寫成"AI": ["artificial intelligence","人工智慧"]），英文不分大小寫，不同技能需換行輸入。
+2-1. 執行程式若同一層資料夾內中有config.json，優先讀取config內參數 { duration:監測總時長，預設60秒、tick:每多少秒監測一次，預設1秒、output:輸出檔名，預設resource_usage.csv、threshold:門檻值，過濾CPU及RAM之最大值，若皆小於門檻值則過濾不輸出檔案，預設1(即1%) }。
 
-4.	程式出現 Processes all done. 代表資料抓取完畢。輸出檔案於 output資料夾: output_104.csv、output_104.xlsx，並於網頁呈現結果。
+2-2. 若無config執行時可動態輸入參數(如 python monitor_cpu_ram.py -- duration 30)。
 
-5.	爬取結果；包含公司名稱、職缺名稱、工作地點、待遇、工作內容、工作經驗、學歷要求、福利、各技能比對(1=有，0=無)、技能配對總數(match_skills)等詳細資料。
-### 網頁輸入範例
-![folder](https://github.com/marx1992620/work_104/blob/main/demo/web.png)
-   #### 1.搜尋技能同義詞範例
-![folder](https://github.com/marx1992620/work_104/blob/main/demo/synonym.png)
-### 網頁輸出範例
-![folder](https://github.com/marx1992620/work_104/blob/main/demo/output_table.png)
-### 檔案輸出範例
-   #### 1.資料夾畫面
-![folder](https://github.com/marx1992620/resource_monitor/blob/main/folder.png)
-   #### 2.程式執行畫面
-![processing](https://github.com/marx1992620/resource_monitor/blob/main/processing.png)
-   #### 3.Excel畫面
-![excel](https://github.com/marx1992620/resource_monitor/blob/main/output_file.png)
+2-3. 執行 monitor_cpu_ram.exe，僅會讀取同一層資料夾內的config.json，如無則會照預設值執行。執行畫面如![processing](https://github.com/marx1992620/resource_monitor/blob/main/processing.png)
+
+3. 程式執行完，輸出結果 resource.usage.csv，第二欄為各列數字的最大值，其餘欄位為各時間點；第一二列為電腦總CPU、RAM使用率，其餘列為各程式之CPU、RAM使用率，單位為%。如![excel](https://github.com/marx1992620/resource_monitor/blob/main/output_file.png)
