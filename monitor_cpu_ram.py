@@ -7,20 +7,25 @@ import os
 import json
 
 def monitor_resource_usage(duration=60, tick=1, output_file='resource_usage.csv' , threshold=1):
+    if tick < 1:
+        tick = 1
+        print("tick should be greater than 1")
     start_time = time.time()
     time_list =[]
     memory_usage = []
     cpu_usage = []
     # 存儲每個進程的CPU和RAM使用率
     resource_percentages = {}
+    cpu_num = psutil.cpu_count(logical=True)
+    print("logical cpu numbers:",cpu_num)
 
     while time.time() - start_time < duration:
         # 獲取系統虛擬記憶體使用率
         virtual_memory = psutil.virtual_memory()
         memory_usage.append(virtual_memory.percent)
-        total_cpu_percent = round(psutil.cpu_percent(), 2)
+        total_cpu_percent = round(psutil.cpu_percent(),1)
         cpu_usage.append(total_cpu_percent)
-        print(f"System CPU Usage: {total_cpu_percent}% , System Memory Usage: {virtual_memory.percent:.2f}%")
+        print(f"System CPU Usage: {total_cpu_percent}% , System Memory Usage: {virtual_memory.percent:.1f}%")
         # 獲取所有正在運行的進程
         processes = psutil.process_iter(['pid', 'name', 'cpu_percent', 'memory_percent'])
         time_list.append(str(datetime.now().strftime("%H:%M:%S")))
@@ -41,7 +46,8 @@ def monitor_resource_usage(duration=60, tick=1, output_file='resource_usage.csv'
                         resource_percentages[pid]['ram_percent'].extend([0 for _ in range(len(time_list)-1)])
                         
                 if pid in resource_percentages:
-                    resource_percentages[pid]['cpu_percent'].append(cpu_percent)
+                    relative_cpu = round(cpu_percent/cpu_num,1)
+                    resource_percentages[pid]['cpu_percent'].append(relative_cpu)
                     resource_percentages[pid]['ram_percent'].append(ram_percent)
 
             except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
@@ -69,8 +75,8 @@ def monitor_resource_usage(duration=60, tick=1, output_file='resource_usage.csv'
 
 
 def main():
-    if os.path.exists("record_cpu.json"):
-        with open("record_cpu.json","r",encoding="utf8")as f:
+    if os.path.exists("config.json"):
+        with open("config.json","r",encoding="utf8")as f:
             arguments = json.loads(f.read())
             monitor_resource_usage(duration=arguments["duration"], tick=arguments["tick"], output_file=arguments["output"], threshold=arguments["threshold"])
 
