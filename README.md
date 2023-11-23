@@ -23,3 +23,8 @@
 3. 程式執行完，輸出結果 resource.usage.csv，第二欄為各列數字的最大值，其餘欄位為各時間點；第一二列為電腦總CPU、RAM使用率，其餘列為各程式之CPU、RAM使用率，單位為 % <br>
  ![excel](https://github.com/marx1992620/resource_monitor/blob/main/output.png)
 <br>
+
+### 資料說明
+
+CPU總使用率:在測量時間內，計算平均每個 CPU 使用時間，換算成百分比。
+各程式CPU使用率:在測量時間內，計算程式占用 CPU 時間，換算成百分比。
