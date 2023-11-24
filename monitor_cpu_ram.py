@@ -72,8 +72,6 @@ def monitor_resource_usage(duration=60, tick=1, output_file='resource_usage.csv'
                 writer.writerow([f"{pid}_{resource_percentages[pid]['name']}_ram"] + [max(resource_percentages[pid]['ram_percent'])] +resource_percentages[pid]['ram_percent'])
 
 
-
-
 def main():
     if os.path.exists("config.json"):
         with open("config.json","r",encoding="utf8")as f:

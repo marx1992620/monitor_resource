@@ -1,5 +1,5 @@
 {
-"duration":300,
+"duration":60,
 "tick":1,
 "output":"resource_usage.csv",
 "threshold":0.2
